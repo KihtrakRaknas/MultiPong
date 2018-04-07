@@ -135,14 +135,14 @@ function renderPaddle(){
 	if(MASTER)
 		if(ballX-10>=paddleX && ballX-10<=paddleX+50 &&  ballY+10>=paddleY && ballY-10<=paddleY+400 && !contact>10){
 			contact=0;
-			database.ref().update({VX: ballVX *=-1});
+			database.ref().update({VX: ballVX *-1});
 		}else{
 			contact++;
 		}
 	else if(RUN){
 		if(ballX+10>=paddleX && ballX+10<=paddleX+50 &&  ballY+10>=paddleY && ballY-10<=paddleY+400 && contact>10){
 			contact=0;
-			database.ref().update({VX: ballVX *=-1});
+			database.ref().update({VX: ballVX *-1});
 		}else{
 			contact++;
 		}
