@@ -102,7 +102,6 @@ database.ref().on("value", function(e){
 		ballX = e.val().x-oppWidth;
 	}
 	ballY = e.val().y;
-	renderBall();
 	}
   });
 
@@ -132,4 +131,5 @@ function render(){
 		});
 	}
 	renderPaddle();	
+	renderBall();
 }
