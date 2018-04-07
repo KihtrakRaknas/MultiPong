@@ -31,7 +31,9 @@ canvas.addEventListener("touchmove", function (e) {
 	if (e.target == canvas) {
 		e.preventDefault();
 	}
-	renderPaddleLeft(touch.clientY);
+	database.ref().set({
+		LeftPaddleY: touch.clientY
+	});
 }, false);
 
 
@@ -53,10 +55,12 @@ function render(){
 	renderPaddleLeft();
 	//clear();
 }
-
+  database.ref().on("value", function(e){
+  	renderPaddleLeft(renderPaddleLeft.val().LeftPaddleY);
+  });
 function renderBall(){
 	ctx.drawImage(ballImage,ballX,ballY,10,10);
 }
-function renderPaddleLeft(var paddleY){
+function renderPaddleLeft(paddleY){
 	ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
 }
