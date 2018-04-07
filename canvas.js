@@ -56,16 +56,16 @@ function clear(){
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function render(){
-	clear();
-	renderBall();
-	renderPaddle();	
-}
-
 function renderBall(){
 	ctx.drawImage(ballImage,ballX,ballY,10,10);
 }
 
 function renderPaddle(){
 	ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
+}
+
+function render(){
+	clear();
+	renderBall();
+	renderPaddle();	
 }
