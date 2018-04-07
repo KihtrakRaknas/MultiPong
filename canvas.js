@@ -95,6 +95,9 @@ database.ref().once("value", function(e){
 		y:500,
 		screenWidth: document.body.clientWidth,
 		VX:10
+		database.ref().update({first: true});
+		MASTER=true;
+		paddleX=5;
  	 });
 	}
 	console.log(MASTER);
