@@ -12,7 +12,7 @@ var ballX = 50;
 var paddleX = 5;
 var paddleY = 5;
 
-window.onload = function(e){
+paddleImage.onload = function(e){
 	console.log("START");
 	start();
 
