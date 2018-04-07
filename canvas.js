@@ -9,11 +9,30 @@ paddleImage.src = "paddle.png";
 var ballY = 50;
 var ballX = 50;
 
-var paddleY = 5;
 var paddleX = 5;
 
 start();
 render();
+
+canvas.addEventListener("touchstart", function (e) {
+  if (e.target == canvas) {
+    e.preventDefault();
+  }
+}, false);
+
+canvas.addEventListener("touchend", function (e) {
+  if (e.target == canvas) {
+    e.preventDefault();
+  }
+}, false);
+
+canvas.addEventListener("touchmove", function (e) {
+	var touch = e.touches[0];
+	if (e.target == canvas) {
+		e.preventDefault();
+	}
+	renderPaddleLeft(touch.clientY);
+}, false);
 
 
 var game = {
@@ -31,13 +50,13 @@ function clear(){
 
 function render(){
 	renderBall();
-	renderPaddle();
+	renderPaddleLeft();
 	//clear();
 }
 
 function renderBall(){
 	ctx.drawImage(ballImage,ballX,ballY,10,10);
 }
-function renderPaddle(){
+function renderPaddleLeft(var paddleY){
 	ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
 }
