@@ -118,7 +118,7 @@ var contact = false;
 function renderPaddle(){
 	//ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
 	ctx.fillRect(paddleX,paddleY,50,400);
-	if(master)
+	if(MASTER)
 		if(ballX-50<paddleX && ballX-50>paddleX+50 &&  ballY+50<paddleY && ballY-50>paddleY+400 && !contact){
 			contact = true;
 			database.ref().update({VX: ballVX *=-1});
