@@ -27,8 +27,9 @@ var ctx = canvas.getContext("2d");
 var paddleImage = new Image();
 paddleImage.src = "paddle.png";
 
-var ballY = 5;
-var ballX = 5;
+var ballY = 200;
+var ballX = 20
+0;
 
 var paddleX = 5;
 var paddleY = 5;
@@ -135,13 +136,18 @@ function renderPaddle(){
 	}
 }
 var count =0;
+var hitWall = false;
+
 function render(){
 	count++;
 	clear();
 	if(MASTER){
-		if(ballY-50+ballVY<0||ballY+50+ballVY>window.innerHeight){
+		if(ballY-50+ballVY<0||ballY+50+ballVY>window.innerHeight&&!hitWall){
 			ballVY=ballVY*-1;
 			console.log("FLIP");
+			hitWall = true;
+		}else{
+			hitWall = false;
 		}
 		database.ref().update({
    			x:ballX+ballVX,
