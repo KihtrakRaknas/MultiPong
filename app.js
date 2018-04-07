@@ -13,7 +13,8 @@
 
 
 var canvas = document.getElementById("myCanvas");
-
+canvas.width = document.body.clientWidth;
+canvas.height = window.innerHeight;
 //canvas.width = screen.width;
 //canvas.height = screen.height;
 console.log(screen.width);
