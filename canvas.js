@@ -75,7 +75,7 @@ var game = {
 function start(){
 	canvas.width = document.body.clientWidth;
 	canvas.height = window.innerHeight;
-	var loop = setInterval(render,50);
+	var loop = setInterval(render,10);
 }
 var MASTER=false;
 var oppWidth;
@@ -111,7 +111,7 @@ function clear(){
 }
 
 function renderBall(){
-	ctx.drawImage(ballImage,ballX,ballY,10,10);
+	ctx.drawImage(ballImage,ballX,ballY,100,100);
 }
 
 function renderPaddle(){
