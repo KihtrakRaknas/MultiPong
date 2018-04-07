@@ -10,7 +10,6 @@ var ballY = 50;
 var ballX = 50;
 
 var paddleX = 5;
-var paddleY = 5;
 
 start();
 render();
@@ -54,10 +53,6 @@ function render(){
 	renderPaddleLeft();
 	//clear();
 }
-
-  database.ref().on("value", function(e){
-  	renderPaddleLeft(renderPaddleLeft.val().LeftPaddleY);
-  });
 
 function renderBall(){
 	ctx.drawImage(ballImage,ballX,ballY,10,10);
