@@ -10,6 +10,7 @@ var ballY = 50;
 var ballX = 50;
 
 var paddleX = 5;
+var paddleY = 5;
 
 start();
 render();
@@ -31,9 +32,7 @@ canvas.addEventListener("touchmove", function (e) {
 	if (e.target == canvas) {
 		e.preventDefault();
 	}
-	database.ref().set({
-		LeftPaddleY: touch.clientY
-	});
+	renderPaddle(touch.clientY);
 }, false);
 
 
@@ -55,12 +54,14 @@ function render(){
 	renderPaddleLeft();
 	//clear();
 }
+
   database.ref().on("value", function(e){
   	renderPaddleLeft(renderPaddleLeft.val().LeftPaddleY);
   });
+
 function renderBall(){
 	ctx.drawImage(ballImage,ballX,ballY,10,10);
 }
-function renderPaddleLeft(paddleY){
+function renderPaddle(paddleY){
 	ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
 }
