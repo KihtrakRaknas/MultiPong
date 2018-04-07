@@ -15,7 +15,7 @@ var paddleY = 5;
 window.onload = function(e){
 	console.log("START");
 	start();
-}
+
 
 canvas.addEventListener("touchstart", function (e) {
   if (e.target == canvas) {
@@ -35,7 +35,11 @@ canvas.addEventListener("touchmove", function (e) {
 		e.preventDefault();
 	}
 	paddleY = touch.clientY;
+	console.log(paddleY);
 }, false);
+
+
+}
 
 
 var game = {
@@ -63,6 +67,5 @@ function renderBall(){
 }
 
 function renderPaddle(){
-	console.log("DRAW "+ paddleY)
 	ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
 }
