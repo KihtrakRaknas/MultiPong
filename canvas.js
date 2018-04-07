@@ -17,7 +17,7 @@ database.ref().update({
 	x:50,
 	y:500,
 	screenWidth: document.body.clientWidth,
-	VY:10
+	VX:10
   });
 
 
