@@ -23,8 +23,8 @@ database.ref().update({
 
 const canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var ballImage = new Image();
-ballImage.src = "ball.png";
+var paddleImage = new Image();
+paddleImage.src = "paddle.png";
 
 var ballY = 5;
 var ballX = 5;
