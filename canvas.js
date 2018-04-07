@@ -100,7 +100,6 @@ database.ref().once("value", function(e){
 		database.ref().update({first: true});
 		MASTER=true;
 		paddleX=5;
- 	 });
 	}
 	console.log(MASTER);
 	oppWidth = e.val().screenWidth;
