@@ -114,7 +114,8 @@ function renderBall(){
 }
 
 function renderPaddle(){
-	ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
+	//ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
+	ctx.fillRect(paddleX,paddleY,50,500);
 }
 var count =0;
 function render(){
