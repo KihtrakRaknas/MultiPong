@@ -12,13 +12,13 @@
   var database = firebase.database();
 
 
-database.ref().update({
+//database.ref().update({
   	//first: false,
-	x:50,
-	y:500,
-	screenWidth: document.body.clientWidth,
-	VX:10
-  });
+	//x:50,
+	//y:500,
+	//screenWidth: document.body.clientWidth,
+	//VX:10
+  //});
 
 
 
@@ -84,9 +84,18 @@ database.ref().once("value", function(e){
 		database.ref().update({first: true});
 		MASTER=true;
 		paddleX=5;
-	}else{
+	}else if (e.val().full == null || e.val().full == false){
+		database.ref().update({full: true});
 		MASTER=false;
 		paddleX=document.body.clientWidth-55;
+	}else{
+	    database.ref().update({
+  		first: false,
+		x:50,
+		y:500,
+		screenWidth: document.body.clientWidth,
+		VX:10
+ 	 });
 	}
 	console.log(MASTER);
 	oppWidth = e.val().screenWidth;
