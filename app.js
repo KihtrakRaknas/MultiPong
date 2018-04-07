@@ -14,8 +14,8 @@
 
 var canvas = document.getElementById("myCanvas");
 
-canvas.width = screen.width;
-canvas.height = screen.height;
+//canvas.width = screen.width;
+//canvas.height = screen.height;
 console.log(screen.width);
 console.log(screen.height);
 var ctx = canvas.getContext("2d");
