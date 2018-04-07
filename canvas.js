@@ -12,8 +12,10 @@ var ballX = 50;
 var paddleX = 5;
 var paddleY = 5;
 
-start();
-setInterval(render(),50)
+window.onload = function(e){
+	console.log("START");
+	start();
+}
 
 canvas.addEventListener("touchstart", function (e) {
   if (e.target == canvas) {
@@ -32,7 +34,6 @@ canvas.addEventListener("touchmove", function (e) {
 	if (e.target == canvas) {
 		e.preventDefault();
 	}
-	console.log(touch.clientY);
 	paddleY = touch.clientY;
 }, false);
 
@@ -44,10 +45,11 @@ var game = {
 function start(){
 	canvas.width = document.body.clientWidth;
 	canvas.height = window.innerHeight;
+	var loop = setInterval(render,50);
 }
 
 function clear(){
-	ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function render(){
@@ -59,6 +61,8 @@ function render(){
 function renderBall(){
 	ctx.drawImage(ballImage,ballX,ballY,10,10);
 }
+
 function renderPaddle(){
+	console.log("DRAW "+ paddleY)
 	ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
 }
