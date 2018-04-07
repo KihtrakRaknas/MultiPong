@@ -12,7 +12,7 @@
   var database = firebase.database();
 
 
-database.ref().set({
+database.ref().update({
   	//first: false,
 	x:50,
 	y:500,
@@ -78,7 +78,7 @@ function start(){
 	canvas.height = window.innerHeight;
 	var loop = setInterval(render,50);
 }
-var MASTER;
+var MASTER=false;
 var oppWidth;
 database.ref().once("value", function(e){
   	if(e.val().first == null || e.val().first == false){
@@ -94,7 +94,7 @@ database.ref().once("value", function(e){
   });
 
 database.ref().on("value", function(e){
-	if(master){
+	if(MASTER){
   		ballX = e.val().x;
 	}else{
 		ballX = e.val().x-oppWidth;
