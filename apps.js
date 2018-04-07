@@ -11,7 +11,13 @@
 
   var database = firebase.database();
 
+
 var canvas = document.getElementById("myCanvas");
+
+canvas.width = screen.width;
+canvas.height = screen.height;
+console.log(screen.width);
+console.log(screen.height);
 var ctx = canvas.getContext("2d");
 canvas.addEventListener("touchstart", function (e) {
   if (e.target == canvas) {
