@@ -50,7 +50,7 @@ function clear(){
 
 function render(){
 	renderBall();
-	renderPaddleLeft();
+	renderPaddle();
 	//clear();
 }
 
