@@ -16,7 +16,8 @@ database.ref().update({
   	//first: false,
 	x:50,
 	y:500,
-	screenWidth: document.body.clientWidth
+	screenWidth: document.body.clientWidth,
+	VY:10
   });
 
 
@@ -100,6 +101,7 @@ database.ref().on("value", function(e){
 	}
 	ballY = e.val().y;
 	}
+	ballVX = e.val().VX;
   });
 
 function clear(){
@@ -112,17 +114,32 @@ function renderBall(){
 	ctx.fill();
 	ctx.closePath();
 }
-
+var contact = false;
 function renderPaddle(){
 	//ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
-	ctx.fillRect(paddleX,paddleY,50,500);
+	ctx.fillRect(paddleX,paddleY,50,400);
+	if(master)
+		if(ballX-50<paddleX && ballX-50>paddleX+50 &&  ballY+50<paddleY && ballY-50>paddleY+400 && !contact){
+			contact = true;
+			database.ref().update({VX: ballVX *=-1});
+		}else{
+			contact = false;
+		}
+	else if(RUN){
+		if(ballX+50<paddleX && ballX+50>paddleX+50 &&  ballY+50<paddleY && ballY-50>paddleY+400 && !contact){
+			contact = true;
+			database.ref().update({VX: ballVX *=-1});
+		}else{
+			contact = false;
+		}
+	}
 }
 var count =0;
 function render(){
 	count++;
 	clear();
 	if(MASTER){
-		if(ballY+ballVY<0||ballY+ballVY>window.innerHeight){
+		if(ballY-50+ballVY<0||ballY+50+ballVY>window.innerHeight){
 			ballVY=ballVY*-1;
 			console.log("FLIP");
 		}
