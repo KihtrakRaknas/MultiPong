@@ -62,7 +62,6 @@ canvas.addEventListener("touchmove", function (e) {
 		e.preventDefault();
 	}
 	paddleY = touch.clientY;
-	console.log(paddleY);
 }, false);
 
 
@@ -80,6 +79,7 @@ function start(){
 }
 var MASTER=false;
 var oppWidth;
+var RUN = false;
 database.ref().once("value", function(e){
   	if(e.val().first == null || e.val().first == false){
 		database.ref().update({first: true});
@@ -91,9 +91,11 @@ database.ref().once("value", function(e){
 	}
 	console.log(MASTER);
 	oppWidth = e.val().screenWidth;
+	RUN = true;
   });
 
 database.ref().on("value", function(e){
+	if(RUN){
 	if(MASTER){
   		ballX = e.val().x;
 	}else{
@@ -101,6 +103,7 @@ database.ref().on("value", function(e){
 	}
 	ballY = e.val().y;
 	renderBall();
+	}
   });
 
 function clear(){
@@ -114,8 +117,9 @@ function renderBall(){
 function renderPaddle(){
 	ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
 }
-
+var count =0;
 function render(){
+	count++;
 	clear();
 	if(MASTER){
 		if(ballY+ballVY<0||ballY+ballVY>window.innerHeight){
