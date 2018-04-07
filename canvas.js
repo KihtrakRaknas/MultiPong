@@ -26,17 +26,14 @@ var ctx = canvas.getContext("2d");
 var ballImage = new Image();
 ballImage.src = "ball.png";
 
-var paddleImage = new Image();
-paddleImage.src = "paddle.png";
-
 var ballY = 5;
 var ballX = 5;
 
 var paddleX = 5;
 var paddleY = 5;
 
-var ballVX = 1;
-var ballVY = 1;
+var ballVX = 10;
+var ballVY = 10;
 
 
 paddleImage.onload = function(e){
@@ -110,7 +107,10 @@ function clear(){
 }
 
 function renderBall(){
-	ctx.drawImage(ballImage,ballX,ballY,100,100);
+	ctx.beginPath();
+	ctx.arc(ballX, ballY, 50, 0, 2*Math.PI);
+	ctx.fill();
+	ctx.closePath();
 }
 
 function renderPaddle(){
