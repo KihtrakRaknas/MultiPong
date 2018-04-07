@@ -84,7 +84,7 @@ database.ref().once("value", function(e){
 		paddleX=5;
 	}else{
 		MASTER=false;
-		paddleX=document.body.clientWidth-5;
+		paddleX=document.body.clientWidth-55;
 	}
 	console.log(MASTER);
 	oppWidth = e.val().screenWidth;
