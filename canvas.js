@@ -91,6 +91,7 @@ database.ref().once("value", function(e){
 	}else{
 	    database.ref().update({
   		first: false,
+		full: false,
 		x:50,
 		y:500,
 		screenWidth: document.body.clientWidth,
