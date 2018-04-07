@@ -140,7 +140,7 @@ function renderPaddle(){
 			contact = false;
 		}
 	else if(RUN){
-		if(ballX+50>=paddleX && ballX+50<=paddleX+50 &&  ballY+50<=paddleY && ballY-50>=paddleY+400 && !contact){
+		if(ballX+50>=paddleX && ballX+50<=paddleX+50 &&  ballY+50>=paddleY && ballY-50<=paddleY+400 && !contact){
 			contact = true;
 			database.ref().update({VX: ballVX *=-1});
 		}else{
