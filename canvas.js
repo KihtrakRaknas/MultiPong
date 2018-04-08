@@ -173,7 +173,7 @@ function render(){
 			database.ref().update({
 				x:document.body.clientWidth,
 				y:document.body.clientHeight/2
-			}
+			});
 		}
 	}else{
 		if(ballX>document.body.clientWidth){
@@ -181,7 +181,7 @@ function render(){
 			database.ref().update({
 				x:document.body.clientWidth,
 				y:document.body.clientHeight/2
-			}
+			});
 		}
 	}
 	renderPaddle();	
