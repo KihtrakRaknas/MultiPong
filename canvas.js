@@ -178,11 +178,11 @@ function render(){
 		}
 	}else{
 		if(ballX>=document.body.clientWidth){
-			score++;
-			database.ref().update({
-				x:document.body.clientWidth,
-				y:document.body.clientHeight/2
-			});
+			//score++;
+			//database.ref().update({
+				//x:document.body.clientWidth,
+				//y:document.body.clientHeight/2
+			//});
 		}
 	}
 	renderPaddle();	
