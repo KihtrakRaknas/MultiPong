@@ -27,9 +27,8 @@ var ctx = canvas.getContext("2d");
 var paddleImage = new Image();
 paddleImage.src = "paddle.png";
 
-var ballY = 200;
-var ballX = 20
-0;
+var ballY = document.body.clientHeight/2;
+var ballX = document.body.clientWidth;
 
 var paddleX = 5;
 var paddleY = 5;
@@ -76,6 +75,7 @@ function start(){
 	canvas.height = window.innerHeight;
 	var loop = setInterval(render,10);
 }
+
 var MASTER=false;
 var oppWidth;
 var RUN = false;
@@ -92,8 +92,8 @@ database.ref().once("value", function(e){
 	    database.ref().update({
   		first: false,
 		full: false,
-		x:50,
-		y:500,
+		x:ballX,
+		y:ballY,
 		screenWidth: document.body.clientWidth,
 		VX:10
 	    });
@@ -167,6 +167,21 @@ function render(){
    			x:ballX+ballVX,
 			y:ballY+ballVY
 		});
+		if(ballX<0){
+			//score++
+			database.ref().update({
+				x:document.body.clientWidth,
+				y:document.body.clientHeight/2
+			}
+		}
+	}else{
+		if(ballX>document.body.clientWidth){
+			//score++
+			database.ref().update({
+				x:document.body.clientWidth,
+				y:document.body.clientHeight/2
+			}
+		}
 	}
 	renderPaddle();	
 	renderBall();
