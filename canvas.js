@@ -147,14 +147,14 @@ function renderPaddle(){
 	//ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
 	ctx.fillRect(paddleX,paddleY,50,400);
 	if(MASTER){
-		if(ballX-50>=paddleX && ballX-50<=paddleX+50 &&  ballY+10>=paddleY && ballY-10<=paddleY+400 && contact>10){
+		if(ballX-50>=paddleX && ballX-50<=paddleX+50 &&  ballY+10>=paddleY && ballY-10<=paddleY+400 && contact>100){
 			contact=0;
 			database.ref().update({VX: ballVX *-1});
 		}else{
 			contact++;
 		}
 	}else if(RUN){
-		if(ballX+50>=paddleX && ballX+50<=paddleX+50 &&  ballY+10>=paddleY && ballY-10<=paddleY+400 && contact>10){
+		if(ballX+50>=paddleX && ballX+50<=paddleX+50 &&  ballY+10>=paddleY && ballY-10<=paddleY+400 && contact>100){
 			contact=0;
 			database.ref().update({VX: ballVX *-1});
 		}else{
