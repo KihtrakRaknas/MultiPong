@@ -36,6 +36,7 @@ var paddleY = 5;
 var ballVX = 10;
 var ballVY = 10;
 
+var score=0;
 
 paddleImage.onload = function(e){
 	console.log("START");
@@ -168,7 +169,7 @@ function render(){
 			y:ballY+ballVY
 		});
 		if(ballX<0){
-			//score++
+			score++;
 			database.ref().update({
 				x:document.body.clientWidth,
 				y:document.body.clientHeight/2
@@ -176,7 +177,7 @@ function render(){
 		}
 	}else{
 		if(ballX>document.body.clientWidth){
-			//score++
+			score++;
 			database.ref().update({
 				x:document.body.clientWidth,
 				y:document.body.clientHeight/2
@@ -185,4 +186,10 @@ function render(){
 	}
 	renderPaddle();	
 	renderBall();
+	drawScore();
+}
+function drawScore(){
+	ctx.font = "32px Lucky Guy";
+	ctx.fillStyle="#00FF44";
+	ctx.filltext(score, document.body.clientWidth-50, 50);
 }
