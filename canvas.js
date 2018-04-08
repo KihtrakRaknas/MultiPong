@@ -33,7 +33,7 @@ var ballX = document.body.clientWidth;
 var paddleX = 5;
 var paddleY = 5;
 
-var ballVX = 30;
+var ballVX = 40;
 var ballVY = 20;
 
 var score=0;
@@ -208,5 +208,9 @@ function render(){
 }
 function drawScore(){
 	ctx.font = "32px Lucky Guy";
-	ctx.fillText((disScore), document.body.clientWidth-50, 50);
+	if(MASTER){
+		ctx.fillText((disScore), document.body.clientWidth-50, 50);
+	}else{
+		ctx.fillText((disScore), 50, 50);
+	}
 }
