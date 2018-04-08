@@ -177,10 +177,10 @@ function render(){
 			});
 		}
 	}else{
-		if(ballX>=document.body.clientWidth){
+		if(ballX>=0){
 			score++;
 			database.ref().update({
-				x:0,
+				x:document.body.clientWidth,
 				y:document.body.clientHeight/2
 			});
 		}
