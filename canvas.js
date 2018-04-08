@@ -74,7 +74,7 @@ var game = {
 function start(){
 	canvas.width = document.body.clientWidth;
 	canvas.height = window.innerHeight;
-	var loop = setInterval(render,10);
+	var loop = setInterval(render,1);
 }
 
 var MASTER=false;
@@ -185,6 +185,7 @@ function render(){
 			database.ref().update({
 				masterScore: score,
 				x:document.body.clientWidth,
+
 				y:document.body.clientHeight/2
 			});
 		}else{
