@@ -96,7 +96,9 @@ database.ref().once("value", function(e){
 		x:ballX,
 		y:ballY,
 		screenWidth: document.body.clientWidth,
-		VX:10
+		VX:10,
+		slaveScore: 0,
+		masterScore: 0
 	    });
 		database.ref().update({first: true});
 		MASTER=true;
@@ -186,7 +188,7 @@ function render(){
 		}
 	}else{
 		if(ballX>=document.body.clientWidth){
-			//score++;
+			score++;
 			database.ref().update({
 				slaveScore: score
 			});
