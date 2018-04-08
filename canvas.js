@@ -107,12 +107,23 @@ database.ref().once("value", function(e){
 	RUN = true;
   });
 
+var oldSlaveScore = 0;
+var disScore = 0;
 database.ref().on("value", function(e){
 	if(RUN){
 	if(MASTER){
   		ballX = e.val().x;
+		if(oldSlaveScore!=e.val().slaveScore){
+			oldSlaveScore=e.val().slaveScore;
+			disScore = e.val().slaveScore
+			database.ref().update({
+				x:document.body.clientWidth,
+				y:document.body.clientHeight/2
+			});
+		}
 	}else{
 		ballX = e.val().x-oppWidth;
+		disScore = e.val().masterScore;
 	}
 	ballY = e.val().y;
 	}
@@ -152,7 +163,6 @@ function renderPaddle(){
 }
 var count =0;
 var hitWall = false;
-
 function render(){
 	count++;
 	clear();
@@ -172,6 +182,7 @@ function render(){
 		if(ballX<=0){
 			score++;
 			database.ref().update({
+				masterScore: score;
 				x:document.body.clientWidth,
 				y:document.body.clientHeight/2
 			});
@@ -179,10 +190,9 @@ function render(){
 	}else{
 		if(ballX>=document.body.clientWidth){
 			//score++;
-			//database.ref().update({
-				//x:document.body.clientWidth,
-				//y:document.body.clientHeight/2
-			//});
+			database.ref().update({
+				slaveScore: score;
+			});
 		}
 	}
 	renderPaddle();	
@@ -191,5 +201,5 @@ function render(){
 }
 function drawScore(){
 	ctx.font = "32px Lucky Guy";
-	ctx.fillText((score), document.body.clientWidth-50, 50);
+	ctx.fillText((disScore), document.body.clientWidth-50, 50);
 }
