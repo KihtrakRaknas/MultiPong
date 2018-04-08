@@ -145,7 +145,6 @@ function renderPaddle(){
 	//ctx.drawImage(paddleImage,paddleX,paddleY,10,100);
 	ctx.fillRect(paddleX,paddleY,50,400);
 	if(MASTER){
-		console.log(ballX-50);
 		if(ballX-50>=paddleX && ballX-50<=paddleX+50 &&  ballY+10>=paddleY && ballY-10<=paddleY+400 && contact>10){
 			contact=0;
 			database.ref().update({VX: ballVX *-1});
@@ -169,7 +168,6 @@ function render(){
 	if(MASTER){
 		if(ballY-50+ballVY<0||ballY+50+ballVY>window.innerHeight&&!hitWall){
 			ballVY=ballVY*-1;
-			console.log("FLIP");
 			hitWall = true;
 		}else{
 			hitWall = false;
@@ -178,7 +176,6 @@ function render(){
    			x:ballX+ballVX,
 			y:ballY+ballVY
 		});
-		console.log(ballX);
 		if(ballX<=0){
 			score++;
 			database.ref().update({
