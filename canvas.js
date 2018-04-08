@@ -162,6 +162,7 @@ function renderPaddle(){
 		}
 	}
 }
+var scoreRec = false;
 var count =0;
 var hitWall = false;
 function render(){
@@ -178,20 +179,26 @@ function render(){
    			x:ballX+ballVX,
 			y:ballY+ballVY
 		});
-		if(ballX<=0){
+		if(ballX<=0&&!scoreRec){
+			scoreRec=true;
 			score++;
 			database.ref().update({
 				masterScore: score,
 				x:document.body.clientWidth,
 				y:document.body.clientHeight/2
 			});
+		}else{
+			scoreRec=false;
 		}
 	}else{
-		if(ballX>=document.body.clientWidth){
+		if(ballX>=document.body.clientWidth&&!scoreRec){
+			scoreRec=true;
 			score++;
 			database.ref().update({
 				slaveScore: score
 			});
+		}else{
+			scoreRec=false;
 		}
 	}
 	renderPaddle();	
