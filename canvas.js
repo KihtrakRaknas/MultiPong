@@ -190,6 +190,5 @@ function render(){
 }
 function drawScore(){
 	ctx.font = "32px Lucky Guy";
-	ctx.fillStyle="#00FF44";
-	ctx.fillText(score, document.body.clientWidth-50, 50);
+	ctx.fillText((score), document.body.clientWidth-50, 50);
 }
