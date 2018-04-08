@@ -33,8 +33,8 @@ var ballX = document.body.clientWidth;
 var paddleX = 5;
 var paddleY = 5;
 
-var ballVX = 10;
-var ballVY = 5;
+var ballVX = 40;
+var ballVY = 30;
 
 var score=0;
 
@@ -74,7 +74,7 @@ var game = {
 function start(){
 	canvas.width = document.body.clientWidth;
 	canvas.height = window.innerHeight;
-	var loop = setInterval(render,1);
+	var loop = setInterval(render,10);
 }
 
 var MASTER=false;
