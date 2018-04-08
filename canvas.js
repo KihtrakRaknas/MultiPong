@@ -168,6 +168,7 @@ function render(){
    			x:ballX+ballVX,
 			y:ballY+ballVY
 		});
+		console.log(ballX);
 		if(ballX<=0){
 			score++;
 			database.ref().update({
@@ -179,7 +180,7 @@ function render(){
 		if(ballX>=document.body.clientWidth){
 			score++;
 			database.ref().update({
-				x:document.body.clientWidth,
+				x:0,
 				y:document.body.clientHeight/2
 			});
 		}
